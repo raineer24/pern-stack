@@ -9,6 +9,6 @@ router.get('/login', (req,res) => {
 router.get('/logout', (req,res) => {
     res.send('Logged out sucessfully');
 });
-//router.post('/signup', signup);
+router.post('/signup', signup);
 
 export default router;
