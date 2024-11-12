@@ -57,5 +57,13 @@ export const signup = async (req: Request, res: Response) => {
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 };
-export const login = async (req: Request, res: Response) => {}
+export const login = async (req: Request, res: Response) => {
+    try {
+        const { username, password} = req.body;
+        const user = await prisma.user.findUnique({ where: { username}});
+        
+    } catch (error) {
+        
+    }
+}
 export const logout = async (req: Request, res: Response) => {}
