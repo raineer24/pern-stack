@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import prisma from '../src/db/prisma.ts';
-import bcryptjs from 'bcryptjs';
+import prisma from '../src/db/prisma.js';
+import bcryptjs from "bcryptjs"
+import generateToken from '../src/utils/generateToken.js';
 
 export const signup = async (req: Request, res: Response) => {
     try {
@@ -38,6 +39,8 @@ export const signup = async (req: Request, res: Response) => {
 
         if (newUser) {
             // generate token in a sec
+            generateToken(newUser.id, res)
+
             res.status(201).json({
                 id: newUser.id,
                 fullName: newUser.fullName,
@@ -48,8 +51,9 @@ export const signup = async (req: Request, res: Response) => {
             res.status(400).json({ error: "Invalid user data"});
         }
         
-    } catch (error) {
-        
+    } catch (error: any) {
+        console.log("Error in signup controller", error.message);
+        res.status(500).json({ error: "Internal server error"});
     }
 }
 export const login = async (req: Request, res: Response) => {}
