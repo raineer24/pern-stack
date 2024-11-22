@@ -7,11 +7,11 @@ import Signup from "./_ui_design/pages/Signup"
 function App() {
  
   return (
-    <div className="p-4 flex items-center justify-center">
+    <div className="p-4 h-screen flex items-center justify-center">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/" element={<Signup />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
    
