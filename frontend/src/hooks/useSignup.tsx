@@ -16,6 +16,22 @@ const useSignup = () => {
  const signup = async (inputs: SignupInputs) => {
     const success = handleInputErrors(inputs);
     if(!success) return;
+
+    setLoading(true);
+    try {
+        const res = await fetch('http://localhost:5000/api/auth/signup', {
+            method: "POST",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(inputs)
+        });
+
+        const data = await res.json();
+        console.log(data);
+    } catch (error: any) {
+        toast.error(error.message);
+    } finally {
+        setLoading(false);
+    }
  }
 }
 
