@@ -32,7 +32,10 @@ const useSignup = () => {
     } finally {
         setLoading(false);
     }
- }
+ };
+
+ return { loading, signup};
+
 }
 
 function handleInputErrors(inputs: SignupInputs) {
@@ -45,6 +48,13 @@ function handleInputErrors(inputs: SignupInputs) {
         toast.error('Passwords do not match');
         return false;
     }
+    
+    if(inputs.password.length < 6) {
+        toast.error("Password must be at least 6 characters");
+        return false;
+    }
+
+    return true;
 }
 
 export default useSignup
