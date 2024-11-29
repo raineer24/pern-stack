@@ -19,14 +19,18 @@ const useSignup = () => {
 
     setLoading(true);
     try {
-        const res = await fetch('http://localhost:5000/api/auth/signup', {
+        const res = await fetch('/api/auth/signup', {
             method: "POST",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(inputs)
         });
 
         const data = await res.json();
-        console.log(data);
+        if(data.error) {
+            throw new Error(data.error);
+            // localStorage
+            // context
+        }
     } catch (error: any) {
         toast.error(error.message);
     } finally {
