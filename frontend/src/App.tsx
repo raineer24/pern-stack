@@ -9,6 +9,7 @@ import { useAuthContext } from "./context/AuthContext"
 function App() {
 
   const { authUser, isloading} = useAuthContext();
+  console.log('authUser', authUser);
 
   if(isloading) return null;
  
