@@ -1,6 +1,7 @@
 import React from 'react'
+import { MessageType } from '../../../zustand/useConversation'
 
-const Message = () => {
+const Message = ({message}: {message: MessageType}) => {
   return (
     <div className={`chat chat-end`}>
         <div className="chat-image avatar">
