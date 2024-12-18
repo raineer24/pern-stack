@@ -19,7 +19,7 @@ export const useSocketContext = (): ISocketContext => {
 
 //const SocketContext = createContext();
 
-const socketURL = import.meta.env.MODE === 'development' ? 'http://localhost:5001' : '/';
+const socketURL = import.meta.env.MODE === 'development' ? 'http://localhost:5000' : '/';
 
 export const SocketContextProvider = ({ children }: {children: ReactNode}) => {
     const socketRef = useRef<Socket | null >(null);
@@ -38,6 +38,7 @@ export const SocketContextProvider = ({ children }: {children: ReactNode}) => {
             socketRef.current = socket;
 
             socket.on('getOnlineUsers', (users: string[]) => {
+                console.log('USERS ONLINE',users);
                 setOnlineUsers(users);
             });
 

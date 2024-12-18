@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
-import { Search } from "lucide-react";
+
 import useConversation, {
   ConversationType,
 } from "../../../zustand/useConversation";
@@ -25,8 +25,8 @@ const SearchInput = () => {
 
     if (conversation) {
       setSelectedConversation(conversation);
-      setSearch('');
-    } else toast.error('No such user found!');
+      setSearch("");
+    } else toast.error("No such user found!");
   };
 
   return (
